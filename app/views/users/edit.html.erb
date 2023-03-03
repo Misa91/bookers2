@@ -1,10 +1,51 @@
-<h2>プロフィール編集</h2>
-<%= form_with model: @user do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-  <label for="inputInformation">Information</label>
-  <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"説明"%>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container mt-3">
+  <div class="row">
+    <h2>User info</h2>
+  </div>
+
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %>error prohibited this user from being updated:
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: @user do |f| %>
+  <div class="row">
+    <label for="inputName">Name</label>
+  </div>
+  <div class="row">
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
+  </div>
+
+  <div class="row">
+    <label for="inputInformation">Introduction</label>
+  </div>
+  <div class="row">
+    <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Intro"%>
+  </div>
+
+  <div class="row">
+    <label for="inputImage">ProfileImage</label>
+  </div>
+  <div class="row">
+    <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class='form-group'>
+      <%= f.submit 'Update User', class:'btn btn-sm btn-success' %>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
+
+
+
+
+

@@ -1,6 +1,21 @@
-<h1>Welcome to Bookers !!</h1>
-<p>
-In Bookers,<br>
-you can share and exchange your opinions , inpressions , and emotions<br>
-about various books!
-</p>
+<div class="container mt-3">
+  <div>
+    <body>
+      <div class="row">
+        <h1>Welcome to <i class="fas fa-book"></i>Bookers !!</h1>
+      </div>
+      <p>
+        In <i class="fas fa-book"></i>Bookers,<br>
+        you can share and exchange your opinions , inpressions , and emotions<br>
+        about various books!<br>
+      </p>
+      <div class="row">
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-sm btn-primary" %>
+      </div>
+      <br>
+      <div class="row">
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-sm btn-success" %>
+      </div>
+    </body>
+  </div>
+</div>

@@ -1,20 +1,26 @@
-<!-- ユーザーの詳細 -->
-<div>
-  <h3><%= user.name %></h3>
-  <%= image_tag user.get_profile_image(100,100) %>
-  <p>Introduction：<%= user.introduction %></p>
-  <% if user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
-  <% end %>
+<div class="container mt-1">
+  <!-- ユーザーの詳細 -->
+    <h2>User info</h2>
+    <%= image_tag user.get_profile_image(100,100) %>
+    <p>name：<%= user.name %></p>
+    <p>Introduction：<%= user.introduction %></p>
+    <% if user == current_user %>
+        <!--%= link_to edit_user_path(user) %>-->
+      <%= button_to edit_user_path(@user.id), :class => 'ui button', :method => :get do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% end %>
+    <br>
+  <!-- 新規投稿部分 -->
+    <h2>New book</h2>
+    <%= form_for(Book.new) do |f| %>
+    <!--%= form_for(@book, url: '/books') do |f| %>-->
+      <h4>Title</h4>
+        <%= f.text_field :title %>
+      <h4>Opinion</h4>
+        <%= f.text_area :body %>
+      <div class='form-group'>
+        <%= f.submit 'Create Book', class:'btn btn-sm btn-success' %>
+      </div>
+    <% end %>
 </div>
-
-
-<!-- 新規投稿部分 -->
-<h1>New book</h1>
-<%= form_with model: book do |f| %>
-  <h4>Title</h4>
-    <%= f.text_field :title %>
-  <h4>Opinion</h4>
-    <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
