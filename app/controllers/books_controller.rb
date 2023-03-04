@@ -20,13 +20,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @user = @book.user #投稿に紐づいたユーザーの画像を表示
+    @user = @book.user
   end
 
   def edit
     @book = Book.find(params[:id])
-    unless @book.user_id == current_user.id #追加
-      redirect_to books_path #追加
+    unless @book.user_id == current_user.id
+      redirect_to books_path
     end
   end
 
@@ -43,7 +43,6 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    #@books = Book.all
     redirect_to '/books'
   end
 
