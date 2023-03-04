@@ -4,11 +4,8 @@
     <%= image_tag user.get_profile_image(100,100) %>
     <p>name：<%= user.name %></p>
     <p>Introduction：<%= user.introduction %></p>
-    <% if user == current_user %>
-        <!--%= link_to edit_user_path(user) %>-->
-      <%= button_to edit_user_path(@user.id), :class => 'ui button', :method => :get do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
+    <%= link_to edit_user_path(@user.id), :method => :get do %>
+      <i class="fas fa-user-cog"></i>
     <% end %>
     <br>
   <!-- 新規投稿部分 -->
