@@ -42,7 +42,17 @@
                 <%= book.body %>
               </td>
               <td class="col-md-1">
-                <%= book.body %>
+                <% if book.favorited_by?(current_user) %>
+                  <!--%= link_to book_favorites_path(book.id), method: :delete do %>-->
+                  <%= link_to book_favorites_path(book.id), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= book.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <!--%= link_to book_favorites_path(book.id), method: :post do %>-->
+                  <%= link_to book_favorites_path(book.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= book.favorites.count %>
+                  <% end %>
+                <% end %>
               </td>
               <td class="col-md-3">
                 コメント数：<%= book.book_comments.count %>
