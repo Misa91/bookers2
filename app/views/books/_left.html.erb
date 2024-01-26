@@ -8,10 +8,10 @@
       <i class="fas fa-user-cog"></i>
     <% end %>
     <br>
+
   <!-- 新規投稿部分 -->
     <h2>New book</h2>
-    <%= form_for(Book.new) do |f| %>
-    <!--%= form_for(@book, url: '/books') do |f| %>-->
+    <%= form_with model: book do |f| %>
       <h4>Title</h4>
         <%= f.text_field :title %>
       <h4>Opinion</h4>

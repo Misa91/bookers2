@@ -1,6 +1,6 @@
 class BookCommentsController < ApplicationController
 
-  def create
+  def create #ここのローカルでもインスタンスでもいい
     book = Book.find(params[:book_id])
     #book_comment = BookComment.new(book_comment_params)
     #book_comment = current_user.book_comments.new(book_comment_params)
